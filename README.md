@@ -33,3 +33,7 @@ The reference interpreter, written in Haskell, has the following extra features:
 - Informative error messages.
 - All functions can be referred to by their lowercase names, instead of the symbols. They must be separated by symbols or whitespace.
 - All whitespace is ignored, except between lowercase words, where it acts as a separator. An uppercase letter begins a comment that extends to the end of the line.
+
+Invoke it like
+
+<pre><code>runhaskell shift.hs hello.sft</code></pre>
