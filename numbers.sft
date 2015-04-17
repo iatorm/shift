@@ -1,0 +1,9 @@
+@ If this gets a function, it prints 1.
++??/!!.!!@.!!@/!.!! This prints 0.
++>!..!! This maps [f,g] to [(f.g),g]
+?@/!!>!>!>!+>!>!.!!$>!>!>!.!!+>!.!!$>!>!.!!$>!>!.!!+.!!$.!!$.!!$.!!$.!! This gets arguments f g h k. It calls h on k while keeping h intact, then g on h and k while keeping g intact, then duplicates f and calls it on everything.
++! !!!! Duplicate the top function and call it on everything.
+This outputs 0101101110 ... 01^n0 ...
+
+Short version:
+S @+??/!!.!!@.!!@/!.!!+>!..!!?@/!!>!>!>!+>!>!.!!$>!>!>!.!!+>!.!!$>!>!.!!$>!>!.!!+.!!$.!!$.!!$.!!$.!!+!!!!!
