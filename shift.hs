@@ -28,7 +28,7 @@ apply :: Cmd -> [Item] -> Out [Item]
 apply Apply (Funct 1 f : i : is) = liftM (++is) $ f [i]
 apply Apply (Funct n f : i : is) = return $ (Funct (n-1) $ f . (i:)) : is
 apply Apply (Blank : _) = exitWith $ "Error: tried to apply blank"
-apply Apply [Funct n f] = exitWith $ "Error: tried to apply " ++ show n ++ "-ary function to empty list"
+apply Apply [Funct n f] = f []
 apply Apply [] = exitWith "Error: tried to apply empty list"
 apply (I i) is = return $ i : is
 
@@ -86,7 +86,7 @@ fork = let f (Blank:i:_:is) = return $ i : is
 
 call = I $ Funct 1 $ apply Apply
 
-chain = let f ((Funct n g):(Funct m h):is) =
+chain = let f ((Funct m h):(Funct n g):is) =
               return $ (Funct m $ h >=> g):is
             f (_:_:is) = exitWith "Error: tried to apply chain to blank"
             f is = exitWith $ "Error: tried to apply fork to " ++ show (length is) ++ "-element list"

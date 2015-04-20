@@ -1,0 +1,12 @@
+?            Push a blank
+@            Push say
++            Clone
+$>!>!.!!     Twice shifted apply
++>!.!!       Shifted clone
+///!!>!>!.!! Increase arity to 3
++!!          Apply to itself
+!            Apply to say
+!!!!!!!!!!!!!!!! Each "!!!" prints "0"
+
+Short version:
+S ?@+$>!>!.!!+>!.!!///!!>!>!.!!+!!!!!!!!!!!!!!!!!!!
