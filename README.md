@@ -16,7 +16,7 @@ There are 8 commands in total:
 - `!` (_apply_) pops a function `f` and a value `x` from the stack, and applies `f` to `x`. If `f` has arity 1, the list `f(x)` is appended to the stack. If it has arity `n > 1`, a new `(n-1)`-ary function `g` is pushed to the stack. It takes inputs <code>x<sub>1</sub>,x<sub>2</sub>,...,x<sub>n-1</sub></code> and returns <code>f(x,x<sub>1</sub>,x<sub>2</sub>,...,x<sub>n-1</sub>)</code>.
 - `?` (_blank_) pushes a blank to the stack.
 - `+` (_clone_) pushes to the stack a unary function that duplicates its input: any value `x` is mapped to `[x,x]`.
-- `>` (_shift_) pushes to the stack a unary function that takes in an `n`-ary function `f`, and returns an `(n+1)`-ary function `g` that ignores its first argument, and calls `f` on the remaining ones.
+- `>` (_shift_) pushes to the stack a unary function that takes in an `n`-ary function `f`, and returns an `(n+1)`-ary function `g` that ignores its first argument `x`, calls `f` on the remaining ones, and tacks `x` in front of the result. For example, `shift(clone)` is a binary function that takes inputs `a,b` and returns `[a,b,b]`.
 - `/` (_fork_) pushes to the stack a ternary function that takes three inputs `a,b,c`, and returns `[b]` if `a` is a blank, and `[c]` otherwise.
 - `$` (_call_) pushes to the stack a binary function that pops a function `f` and a value `x`, and applies `f` to `x` exactly as `!` does.
 - `.` (_chain_) pushes to the stack a binary function that pops two functions `f` and `g`, and returns their composition: a function `h` that has the same arity as `f`, and which takes its inputs normally, applies `f` to them, and then _fully_ applies `g` to the result.
