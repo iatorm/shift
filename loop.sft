@@ -1,3 +1,6 @@
 $+.!! Push a unary function that calls its argument with itself.
 +! ! Clone it and call it with itself.
 Now you have an infinite loop.
+
+Literal version:
+S call clone chain!! clone!!
