@@ -5,7 +5,7 @@ $>!>!.!!      Apply clone to third input
 +>!.!!        Clone second input
 ///!!>!>!.!!  Increase arity to 3
 +!           Clone
-!!!!!!!!!!!! Each "!!!" on this line prints "0"
+!!!          Each "!!!" on this line prints "0"
 
 Short version:
-S ?@+$>!>!.!!+>!.!!///!!>!>!.!!+!!!!!!!!!!!!!
+S ?@+$>!>!.!!+>!.!!///!!>!>!.!!+!!!!
