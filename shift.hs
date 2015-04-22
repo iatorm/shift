@@ -84,7 +84,7 @@ fork = let f (Blank:i:_:is) = return $ i : is
            f is = exitWith $ "Error: tried to apply fork to " ++ show (length is) ++ "-element list"
        in I $ Funct 3 f
 
-call = I $ Funct 1 $ apply Apply
+call = I $ Funct 2 $ apply Apply
 
 chain = let f ((Funct m h):(Funct n g):is) =
               return $ (Funct m $ h >=> g):is
