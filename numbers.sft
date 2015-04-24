@@ -1,24 +1,26 @@
 @          If this gets a function, it prints 1 and returns it.
 
 ?/!         Keep only the original
-@>!.!!      Shifted say
-??/!!>!.!!  Replace clone by blank
-+.!!        Clone
+@>!         Shifted say
+??/!!>!     Replace clone by blank
++           Clone
+.!!.!!.!!   Compose the above
            If this gets a function, it prints 0 and returns it.
 
 .+>!.!!    This maps [f,g] to [(g.f), g]
 
-$$.!!$.!!$.!!    Call f on f, g, (h.k) and k
-+.!!             Duplicate f
-$>!>!.!!$>!>!.!! Call duplicated g on h and k (gives [(k.h), k])
-+>!.!!           Duplicate g
-$>!>!>!.!!       Call duplicated h on k (prints stuff and returns k)
-+>!>!.!!         Duplicate h
-///!!>!>!>!.!!   Increase arity to 4
+$$$$                           Call f on f, g, (h.k) and k
++                              Duplicate f
+$>!>!$>!>!                     Call duplicated g on h and k (gives [(k.h), k])
++>!                            Duplicate g
+$>!>!>!                        Call duplicated h on k (prints stuff and returns k)
++>!>!                          Duplicate h
+///!!>!>!>!                    Increase arity to 4
+.!!.!!.!!.!!.!!.!!.!!.!!.!!.!! Compose the above
            This gets f g h k. It calls h on k while keeping h intact, then g on h and h(k) while keeping g intact, then duplicates f and calls it on f, g and g(h,h(k)).
 
 +! !!!!    Duplicate the top function and call it on everything.
 This outputs 00101101110 ... 01^n0 ...
 
 Short version:
-S @?/!@>!.!!??/!!>!.!!+.!!.+>!.!!$$.!!$.!!$.!!+.!!$>!>!.!!$>!>!.!!+>!.!!$>!>!>!.!!+>!>!.!!///!!>!>!>!.!!+!!!!!
+S @?/!@>!??/!!>!+.!!.!!.!!.+>!.!!$$$$+$>!>!$>!>!+>!$>!>!>!+>!>!///!!>!>!>!.!!.!!.!!.!!.!!.!!.!!.!!.!!.!!+!!!!!

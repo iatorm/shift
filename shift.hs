@@ -68,31 +68,31 @@ main = do
   prog <- readFile file
   putStrLn $ interpret prog
 
-clone = let f (i:is) = return $ i:i:is
+clone = let f (i : is) = return $ i:i:is
             f [] = exitWith "Error: tried to apply clone to empty list"
         in I $ Funct 1 f
 
-shift = let f (Funct n g:is) = return $ Funct (n+1) h : is
+shift = let f (Funct n g : is) = return $ Funct (n+1) h : is
               where h (x:xs) = liftM (x:) $ g xs
                     h [] = exitWith $ "Error: tried to apply shifted " ++ show (n+1) ++ "-ary function to empty list"
             f is@(Blank:_) = exitWith "Error: tried to apply shift to blank"
             f [] = exitWith "Error: tried to apply shift to empty list"
         in I $ Funct 1 f
 
-fork = let f (Blank:i:_:is) = return $ i : is
-           f (_:_:is) = return is
+fork = let f (Blank : i : _ : is) = return $ i : is
+           f (_ : _ : is) = return is
            f is = exitWith $ "Error: tried to apply fork to " ++ show (length is) ++ "-element list"
        in I $ Funct 3 f
 
 call = I $ Funct 2 $ apply Apply
 
-chain = let f ((Funct m h):(Funct n g):is) =
-              return $ (Funct m $ h >=> g):is
-            f (_:_:is) = exitWith "Error: tried to apply chain to blank"
+chain = let f (Funct m h : Funct n g : is) =
+              return $ (Funct m $ h >=> \js -> liftM (++ drop n js) $ g (take n js)):is
+            f (_ : _ : is) = exitWith "Error: tried to apply chain to blank"
             f is = exitWith $ "Error: tried to apply fork to " ++ show (length is) ++ "-element list"
         in I $ Funct 2 f
 
-say = let f is@(Blank:_) = writer (is,"0")
-          f is@(_:_) = writer (is,"1")
+say = let f is@(Blank : _) = writer (is,"0")
+          f is@(_ : _) = writer (is,"1")
           f is = exitWith "Error: tried to apply say to empty list"
       in I $ Funct 1 f

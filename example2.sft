@@ -1,0 +1,14 @@
+?@      Push blank and say
+$         Apply to first blank
+.         Compose say with itself
++         Copy the say
++>!       Copy the blank
+.!!.!!.!! Compose all
+!!      Apply
++?/!!!  Replace first blank with clone
+@!@>!!! Print it and the second blank
+
+This should print "0010"
+
+Short version:
+S ?@$.++>!.!!.!!.!!!!+?/!!!@!@>!!!

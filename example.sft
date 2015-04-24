@@ -1,11 +1,12 @@
-?            Push a blank
-@            Push say
-+             Clone first input
-$>!>!.!!      Apply clone to third input
-+>!.!!        Clone second input
-///!!>!>!.!!  Increase arity to 3
-+!           Clone
-!!!          Each "!!!" on this line prints "0"
+?        Push a blank
+@        Push say
++         Clone first input
+$>!>!     Apply clone to third input
++>!       Clone second input
+///!!>!>! Increase arity to 3
+.!!.!!.!! Compose all
++!       Clone
+!!!      Each "!!!" on this line prints "0"
 
 Short version:
-S ?@+$>!>!.!!+>!.!!///!!>!>!.!!+!!!!
+S ?@+$>!>!+>!///!!>!>!.!!.!!.!!+!!!!
